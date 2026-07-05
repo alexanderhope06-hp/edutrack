@@ -4,17 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Invoice Generator - EduTrack</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/dark-mode.css" />
     <link rel="stylesheet" href="../assets/css/responsive.css" />
     <link rel="stylesheet" href="../assets/css/dashboard.css" />
     
     <style>
+        /* ============================================
+           INVOICE STYLES - FULLY MOBILE RESPONSIVE
+           ============================================ */
         .invoice-container {
             max-width: 1000px;
             margin: 0 auto;
+            padding: 0 16px;
         }
         
         .invoice-card {
@@ -30,6 +36,7 @@
             border-color: #334155;
         }
         
+        /* ===== INVOICE HEADER ===== */
         .invoice-header {
             display: flex;
             justify-content: space-between;
@@ -37,6 +44,8 @@
             margin-bottom: 32px;
             padding-bottom: 24px;
             border-bottom: 2px solid var(--gray-200);
+            flex-wrap: wrap;
+            gap: 16px;
         }
         
         body.dark-mode .invoice-header {
@@ -47,11 +56,13 @@
             font-size: 1.8rem;
             font-weight: 800;
             color: var(--primary);
+            margin: 0;
         }
         
         .invoice-brand p {
             color: var(--gray-500);
             font-size: 0.9rem;
+            margin: 4px 0;
         }
         
         .invoice-number {
@@ -62,6 +73,7 @@
             font-size: 1.4rem;
             font-weight: 700;
             color: var(--gray-900);
+            display: block;
         }
         
         body.dark-mode .invoice-number .number {
@@ -71,8 +83,10 @@
         .invoice-number .date {
             color: var(--gray-500);
             font-size: 0.9rem;
+            display: block;
         }
         
+        /* ===== INVOICE DETAILS ===== */
         .invoice-details {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -86,21 +100,34 @@
             letter-spacing: 1px;
             color: var(--gray-500);
             margin-bottom: 8px;
+            font-weight: 600;
         }
         
         .invoice-details p {
             color: var(--gray-700);
             line-height: 1.6;
+            margin: 0;
         }
         
         body.dark-mode .invoice-details p {
             color: #cbd5e1;
         }
         
+        .invoice-details .right {
+            text-align: right;
+        }
+        
+        /* ===== INVOICE TABLE ===== */
+        .invoice-table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 24px;
+            -webkit-overflow-scrolling: touch;
+        }
+        
         .invoice-table {
             width: 100%;
+            min-width: 500px;
             border-collapse: collapse;
-            margin-bottom: 24px;
         }
         
         .invoice-table th {
@@ -111,6 +138,7 @@
             font-size: 0.85rem;
             color: var(--gray-600);
             border-bottom: 2px solid var(--gray-200);
+            white-space: nowrap;
         }
         
         body.dark-mode .invoice-table th {
@@ -140,67 +168,177 @@
             border-top-color: #475569;
         }
         
+        .invoice-table .text-right {
+            text-align: right;
+        }
+        
+        /* ===== INVOICE FOOTER ===== */
+        .invoice-footer {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--gray-200);
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            text-align: center;
+        }
+        
+        body.dark-mode .invoice-footer {
+            border-top-color: #334155;
+        }
+        
+        /* ===== INVOICE ACTIONS ===== */
         .invoice-actions {
             display: flex;
             gap: 12px;
             margin-top: 24px;
             flex-wrap: wrap;
+            justify-content: center;
         }
         
-        @media (max-width: 600px) {
-            .invoice-card { padding: 20px; }
-            .invoice-header { flex-direction: column; gap: 16px; }
-            .invoice-number { text-align: left; width: 100%; }
-            .invoice-details { grid-template-columns: 1fr; gap: 16px; }
-            .invoice-table { font-size: 0.85rem; }
-            .invoice-table th, .invoice-table td { padding: 8px 10px; }
+        .invoice-actions .btn {
+            flex: 1;
+            min-width: 140px;
+            justify-content: center;
+        }
+        
+        /* ============================================
+           MOBILE RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .invoice-container {
+                padding: 0 8px;
+            }
+            
+            .invoice-card {
+                padding: 20px 16px;
+            }
+            
+            .invoice-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                margin-bottom: 20px;
+                padding-bottom: 16px;
+            }
+            
+            .invoice-number {
+                text-align: left;
+                width: 100%;
+            }
+            
+            .invoice-number .number {
+                font-size: 1.2rem;
+            }
+            
+            .invoice-details {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                margin-bottom: 20px;
+            }
+            
+            .invoice-details .right {
+                text-align: left;
+            }
+            
+            .invoice-table-wrapper {
+                margin: 0 -8px 16px;
+                padding: 0 8px;
+            }
+            
+            .invoice-table {
+                min-width: 400px;
+                font-size: 0.85rem;
+            }
+            
+            .invoice-table th,
+            .invoice-table td {
+                padding: 8px 10px;
+            }
+            
+            .invoice-table .total-row td {
+                font-size: 1rem;
+            }
+            
+            .invoice-actions {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .invoice-actions .btn {
+                flex: none;
+                width: 100%;
+                min-width: unset;
+                padding: 12px 16px;
+            }
+            
+            .invoice-footer {
+                font-size: 0.75rem;
+                padding-top: 12px;
+                margin-top: 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .invoice-card {
+                padding: 16px 12px;
+                border-radius: var(--radius-sm);
+            }
+            
+            .invoice-brand h2 {
+                font-size: 1.4rem;
+            }
+            
+            .invoice-brand p {
+                font-size: 0.8rem;
+            }
+            
+            .invoice-number .number {
+                font-size: 1rem;
+            }
+            
+            .invoice-number .date {
+                font-size: 0.8rem;
+            }
+            
+            .invoice-table {
+                min-width: 320px;
+                font-size: 0.8rem;
+            }
+            
+            .invoice-table th,
+            .invoice-table td {
+                padding: 6px 8px;
+            }
+            
+            .invoice-table .total-row td {
+                font-size: 0.9rem;
+            }
+            
+            .invoice-actions .btn {
+                font-size: 0.85rem;
+                padding: 10px 14px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-brand">
             <i class="fas fa-graduation-cap"></i>
             <span>EduTrack</span>
         </div>
-        
-
-<nav class="sidebar-nav">
-    <a href="dashboard.html" class="active">
-        <i class="fas fa-th-large"></i>
-        <span>Dashboard</span>
-    </a>
-    <a href="student-profile.html">
-        <i class="fas fa-user-graduate"></i>
-        <span>Students</span>
-        <span class="badge">1.2k</span>
-    </a>
-    <a href="register-student.html">
-        <i class="fas fa-user-plus"></i>
-        <span>Register</span>
-    </a>
-    <a href="analytics.html">
-        <i class="fas fa-chart-line"></i>
-        <span>Analytics</span>
-    </a>
-    <a href="invoice.html">
-        <i class="fas fa-file-invoice-dollar"></i>
-        <span>Invoices</span>
-    </a>
-    <a href="chat-support.html">
-        <i class="fas fa-comment-dots"></i>
-        <span>Live Chat</span>
-        <span class="badge" style="background:#ef4444;color:white;">3</span>
-    </a>
-    <a href="settings.html">
-        <i class="fas fa-cog"></i>
-        <span>Settings</span>
-    </a>
-</nav>
-
-
-
+        <nav class="sidebar-nav">
+            <a href="dashboard.html"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+            <a href="#"><i class="fas fa-user-graduate"></i><span>Students</span></a>
+            <a href="#" class="active"><i class="fas fa-file-invoice-dollar"></i><span>Invoice</span></a>
+            <a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a>
+        </nav>
         <div class="sidebar-footer">
+            <button id="themeToggleSidebar" class="theme-toggle-btn" style="display:flex;align-items:center;gap:8px;width:100%;padding:8px 12px;background:transparent;border:none;cursor:pointer;color:var(--gray-600);font-size:0.9rem;border-radius:var(--radius-sm);transition:all var(--transition);">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
+            </button>
             <div class="user-profile">
                 <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff&size=40" alt="Admin" />
                 <div>
@@ -211,6 +349,7 @@
         </div>
     </aside>
 
+    <!-- MAIN CONTENT -->
     <main class="main-content">
         <header class="dashboard-header">
             <div class="header-left">
@@ -221,7 +360,7 @@
                 <button class="theme-toggle-btn" id="themeToggleHeader" style="font-size:1.2rem;background:none;border:none;cursor:pointer;color:var(--gray-600);">
                     <i class="fas fa-moon"></i>
                 </button>
-                <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff&size=36" alt="Admin" class="avatar" />
+                <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff&size=36" alt="Admin" class="avatar" style="border-radius:50%;width:36px;height:36px;cursor:pointer;" />
             </div>
         </header>
 
@@ -237,11 +376,11 @@
                         </p>
                     </div>
                     <div class="invoice-number">
-                        <div class="number">#INV-2025-001</div>
-                        <div class="date">Date: January 15, 2025</div>
-                        <div style="margin-top:4px;font-size:0.8rem;color:var(--gray-500);">
+                        <span class="number">#INV-2025-001</span>
+                        <span class="date">Date: January 15, 2025</span>
+                        <span style="display:block;margin-top:4px;font-size:0.8rem;color:var(--gray-500);">
                             Due: January 30, 2025
-                        </div>
+                        </span>
                     </div>
                 </div>
 
@@ -257,7 +396,7 @@
                             (555) 123-4567
                         </p>
                     </div>
-                    <div style="text-align:right;">
+                    <div class="right">
                         <h4>Payment Details</h4>
                         <p>
                             <strong>Payment Method:</strong> Bank Transfer<br />
@@ -268,63 +407,65 @@
                     </div>
                 </div>
 
-                <!-- Items -->
-                <table class="invoice-table">
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Description</th>
-                            <th style="text-align:right;">Quantity</th>
-                            <th style="text-align:right;">Unit Price</th>
-                            <th style="text-align:right;">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Annual License</td>
-                            <td>EduTrack School Management Platform</td>
-                            <td style="text-align:right;">1</td>
-                            <td style="text-align:right;">$299.00</td>
-                            <td style="text-align:right;">$299.00</td>
-                        </tr>
-                        <tr>
-                            <td>Student Seats</td>
-                            <td>250 student accounts (additional)</td>
-                            <td style="text-align:right;">250</td>
-                            <td style="text-align:right;">$1.00</td>
-                            <td style="text-align:right;">$250.00</td>
-                        </tr>
-                        <tr>
-                            <td>Premium Support</td>
-                            <td>24/7 priority support + training</td>
-                            <td style="text-align:right;">1</td>
-                            <td style="text-align:right;">$99.00</td>
-                            <td style="text-align:right;">$99.00</td>
-                        </tr>
-                        <tr>
-                            <td>Data Migration</td>
-                            <td>Import existing student data</td>
-                            <td style="text-align:right;">1</td>
-                            <td style="text-align:right;">$149.00</td>
-                            <td style="text-align:right;">$149.00</td>
-                        </tr>
-                        <tr class="total-row">
-                            <td colspan="4" style="text-align:right;font-weight:700;">Subtotal</td>
-                            <td style="text-align:right;font-weight:700;">$797.00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" style="text-align:right;color:var(--gray-500);">Tax (10%)</td>
-                            <td style="text-align:right;color:var(--gray-500);">$79.70</td>
-                        </tr>
-                        <tr class="total-row">
-                            <td colspan="4" style="text-align:right;font-weight:700;font-size:1.2rem;">Total</td>
-                            <td style="text-align:right;font-weight:700;font-size:1.2rem;color:var(--primary);">$876.70</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- Table -->
+                <div class="invoice-table-wrapper">
+                    <table class="invoice-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Description</th>
+                                <th class="text-right">Qty</th>
+                                <th class="text-right">Unit Price</th>
+                                <th class="text-right">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Annual License</td>
+                                <td>EduTrack School Management Platform</td>
+                                <td class="text-right">1</td>
+                                <td class="text-right">$299.00</td>
+                                <td class="text-right">$299.00</td>
+                            </tr>
+                            <tr>
+                                <td>Student Seats</td>
+                                <td>250 student accounts (additional)</td>
+                                <td class="text-right">250</td>
+                                <td class="text-right">$1.00</td>
+                                <td class="text-right">$250.00</td>
+                            </tr>
+                            <tr>
+                                <td>Premium Support</td>
+                                <td>24/7 priority support + training</td>
+                                <td class="text-right">1</td>
+                                <td class="text-right">$99.00</td>
+                                <td class="text-right">$99.00</td>
+                            </tr>
+                            <tr>
+                                <td>Data Migration</td>
+                                <td>Import existing student data</td>
+                                <td class="text-right">1</td>
+                                <td class="text-right">$149.00</td>
+                                <td class="text-right">$149.00</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td colspan="4" class="text-right" style="font-weight:700;">Subtotal</td>
+                                <td class="text-right" style="font-weight:700;">$797.00</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-right" style="color:var(--gray-500);">Tax (10%)</td>
+                                <td class="text-right" style="color:var(--gray-500);">$79.70</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td colspan="4" class="text-right" style="font-weight:700;font-size:1.2rem;">Total</td>
+                                <td class="text-right" style="font-weight:700;font-size:1.2rem;color:var(--primary);">$876.70</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <!-- Footer -->
-                <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-200);font-size:0.85rem;color:var(--gray-500);text-align:center;">
+                <div class="invoice-footer">
                     <p>Thank you for choosing EduTrack! Payment is due within 15 days.</p>
                     <p style="margin-top:4px;">For questions, contact billing@edutrack.com</p>
                 </div>
@@ -349,16 +490,35 @@
     </main>
 
     <script>
-        // Sidebar toggle
+        // ===== SIDEBAR TOGGLE =====
         document.getElementById('menuToggle').addEventListener('click', () => {
             document.getElementById('sidebar').classList.toggle('open');
         });
 
-        // Theme toggle
+        // ===== THEME TOGGLE =====
         document.getElementById('themeToggleHeader').addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
+            updateThemeIcons();
         });
 
+        document.getElementById('themeToggleSidebar').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            updateThemeIcons();
+        });
+
+        function updateThemeIcons() {
+            const isDark = document.body.classList.contains('dark-mode');
+            const icons = document.querySelectorAll('.theme-toggle-btn i');
+            const text = document.querySelector('#themeToggleSidebar span');
+            icons.forEach(icon => {
+                icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            });
+            if (text) {
+                text.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+            }
+        }
+
+        // ===== INVOICE FUNCTIONS =====
         function printInvoice() {
             const printContents = document.getElementById('invoice').innerHTML;
             const originalContents = document.body.innerHTML;

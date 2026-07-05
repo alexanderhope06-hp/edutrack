@@ -348,6 +348,49 @@
     </style>
 </head>
 <body>
+
+
+<div class="theme-selector">
+    <h4>Choose Theme</h4>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;">
+        <button class="btn" style="background:#4f46e5;color:white;" onclick="setTheme('default')">
+            <i class="fas fa-circle"></i> Purple (Default)
+        </button>
+        <button class="btn" style="background:#7c3aed;color:white;" onclick="setTheme('purple')">
+            <i class="fas fa-circle"></i> Violet
+        </button>
+        <button class="btn" style="background:#059669;color:white;" onclick="setTheme('green')">
+            <i class="fas fa-circle"></i> Green
+        </button>
+        <button class="btn" style="background:#ea580c;color:white;" onclick="setTheme('orange')">
+            <i class="fas fa-circle"></i> Orange
+        </button>
+    </div>
+</div>
+
+<script>
+function setTheme(themeName) {
+    // Remove existing theme links
+    document.querySelectorAll('link[data-theme]').forEach(link => {
+        link.remove();
+    });
+    
+    // Apply new theme if not default
+    if (themeName !== 'default') {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = `../assets/css/themes/${themeName}.css`;
+        link.dataset.theme = true;
+        document.head.appendChild(link);
+    }
+    
+    localStorage.setItem('edutrack-theme', themeName);
+    alert(`🎨 Theme changed to ${themeName.charAt(0).toUpperCase() + themeName.slice(1)}!`);
+}
+</script>
+
+
+
     <!-- ===== SIDEBAR ===== -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-brand">

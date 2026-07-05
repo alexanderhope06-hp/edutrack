@@ -5,18 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Profile - EduTrack</title>
     
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
+    <!-- Styles -->
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/dark-mode.css" />
-    <link rel="stylesheet" href="../assets/css/profile.css" />
     <link rel="stylesheet" href="../assets/css/responsive.css" />
     <link rel="stylesheet" href="../assets/css/dashboard.css" />
     
     <style>
-        /* ===== PROFILE HEADER ===== */
+        /* ============================================
+           PROFILE PAGE STYLES
+           ============================================ */
+        
+        /* ----- Profile Card ----- */
         .profile-card {
             background: var(--white);
             border-radius: var(--radius);
@@ -39,6 +48,7 @@
             flex-wrap: wrap;
         }
         
+        /* ----- Avatar ----- */
         .profile-avatar-wrapper {
             position: relative;
             flex-shrink: 0;
@@ -75,6 +85,7 @@
             border-color: #1e293b;
         }
         
+        /* ----- Profile Info ----- */
         .profile-info {
             flex: 1;
             min-width: 200px;
@@ -162,6 +173,7 @@
             text-decoration: underline;
         }
         
+        /* ----- Action Buttons ----- */
         .profile-actions {
             display: flex;
             gap: 10px;
@@ -217,6 +229,7 @@
             background: #16a34a;
         }
         
+        /* ----- Stats Row ----- */
         .profile-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -272,7 +285,9 @@
             font-weight: 500;
         }
         
-        /* ===== TABS - FIXED ===== */
+        /* ============================================
+           TABS - FULLY FIXED
+           ============================================ */
         .profile-tabs {
             display: flex;
             gap: 4px;
@@ -318,6 +333,7 @@
             color: var(--white);
         }
         
+        /* ----- Tab Content ----- */
         .tab-content {
             display: none;
             animation: fadeIn 0.3s ease;
@@ -332,7 +348,9 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* ===== ACADEMICS ===== */
+        /* ============================================
+           ACADEMICS TAB
+           ============================================ */
         .academics-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -392,7 +410,6 @@
         .grade-fill {
             height: 100%;
             border-radius: 50px;
-            /* REMOVED: transition: width 1s ease; - This was causing auto-growth */
         }
         
         .grade-score {
@@ -430,9 +447,12 @@
         .chart-wrapper {
             height: 220px;
             width: 100%;
+            position: relative;
         }
         
-        /* ===== ATTENDANCE ===== */
+        /* ============================================
+           ATTENDANCE TAB - FIXED WITH CONTAINER
+           ============================================ */
         .attendance-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -463,7 +483,41 @@
             color: #e2e8f0;
         }
         
-        /* ===== SUBJECTS ===== */
+        /* ===== ATTENDANCE CHART CONTAINER - FIXED ===== */
+        .attendance-chart-container {
+            margin-top: 20px;
+            background: var(--white);
+            padding: 24px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        
+        body.dark-mode .attendance-chart-container {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        .attendance-chart-container h4 {
+            margin-bottom: 16px;
+            color: var(--gray-900);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        body.dark-mode .attendance-chart-container h4 {
+            color: #e2e8f0;
+        }
+        
+        .attendance-chart-wrapper {
+            height: 220px;
+            width: 100%;
+            position: relative;
+        }
+        
+        /* ============================================
+           SUBJECTS TAB
+           ============================================ */
         .subjects-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -521,7 +575,9 @@
             color: var(--white);
         }
         
-        /* ===== REPORTS ===== */
+        /* ============================================
+           REPORTS TAB
+           ============================================ */
         .reports-list {
             display: flex;
             flex-direction: column;
@@ -572,7 +628,46 @@
             color: var(--gray-500);
         }
         
-        /* ===== RESPONSIVE ===== */
+        /* ============================================
+           BREADCRUMBS
+           ============================================ */
+        .breadcrumbs {
+            display: flex;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            margin-left: 16px;
+        }
+        
+        .breadcrumbs a {
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: all var(--transition);
+        }
+        
+        .breadcrumbs a:hover {
+            color: var(--primary);
+        }
+        
+        .breadcrumbs span {
+            color: var(--gray-400);
+        }
+        
+        body.dark-mode .breadcrumbs span {
+            color: #475569;
+        }
+        
+        body.dark-mode .breadcrumbs a {
+            color: #94a3b8;
+        }
+        
+        body.dark-mode .breadcrumbs a:hover {
+            color: #818cf8;
+        }
+        
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
         @media (max-width: 1024px) {
             .profile-stats { grid-template-columns: repeat(2, 1fr); }
             .academics-grid { grid-template-columns: 1fr; }
@@ -593,6 +688,8 @@
             .subjects-grid { grid-template-columns: 1fr 1fr; }
             .report-item { flex-direction: column; gap: 12px; text-align: center; }
             .report-info { flex-direction: column; }
+            .breadcrumbs { display: none; }
+            .attendance-chart-wrapper { height: 180px; }
         }
         
         @media (max-width: 480px) {
@@ -609,11 +706,15 @@
             .subjects-grid { grid-template-columns: 1fr; }
             .profile-tabs { gap: 2px; }
             .tab-btn { padding: 8px 12px; font-size: 0.8rem; }
+            .attendance-chart-container { padding: 16px; }
+            .attendance-chart-wrapper { height: 160px; }
         }
     </style>
 </head>
 <body>
-    <!-- ===== SIDEBAR ===== -->
+    <!-- ============================================
+    SIDEBAR
+    ============================================ -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-brand">
             <i class="fas fa-graduation-cap"></i>
@@ -643,16 +744,19 @@
         </div>
     </aside>
 
-    <!-- ===== MAIN CONTENT ===== -->
+    <!-- ============================================
+    MAIN CONTENT
+    ============================================ -->
     <main class="main-content">
+        <!-- Header -->
         <header class="dashboard-header">
             <div class="header-left">
                 <button class="menu-toggle" id="menuToggle">
                     <i class="fas fa-bars"></i>
                 </button>
                 <h1>Student Profile</h1>
-                <nav class="breadcrumbs" style="display:flex;gap:6px;font-size:0.8rem;color:var(--gray-500);margin-left:16px;">
-                    <a href="dashboard.html" style="color:var(--gray-500);text-decoration:none;">Dashboard</a>
+                <nav class="breadcrumbs">
+                    <a href="dashboard.html">Dashboard</a>
                     <span>/</span>
                     <span style="color:var(--gray-700);">Student Profile</span>
                 </nav>
@@ -667,15 +771,19 @@
             </div>
         </header>
 
-        <!-- ===== STUDENT PROFILE CARD ===== -->
+        <!-- ============================================
+        STUDENT PROFILE CARD
+        ============================================ -->
         <div class="profile-container">
             <div class="profile-card">
                 <div class="profile-header">
+                    <!-- Avatar -->
                     <div class="profile-avatar-wrapper">
                         <img src="https://ui-avatars.com/api/?name=Emma+Wilson&background=4f46e5&color=fff&size=120&bold=true" alt="Emma Wilson" class="avatar-img" />
                         <span class="online-status"></span>
                     </div>
                     
+                    <!-- Info -->
                     <div class="profile-info">
                         <div class="name-row">
                             <h2>Emma Wilson</h2>
@@ -703,6 +811,7 @@
                     </div>
                 </div>
 
+                <!-- Stats -->
                 <div class="profile-stats">
                     <div class="profile-stat">
                         <span class="stat-value">3.8</span>
@@ -723,17 +832,22 @@
                 </div>
             </div>
 
-            <!-- ===== TABS - FIXED with data-tab attribute ===== -->
+            <!-- ============================================
+            TABS - FULLY FIXED WITH onclick
+            ============================================ -->
             <div class="profile-tabs">
-                <button class="tab-btn active" data-tab="academics">Academics</button>
-                <button class="tab-btn" data-tab="attendance">Attendance</button>
-                <button class="tab-btn" data-tab="subjects">Subjects</button>
-                <button class="tab-btn" data-tab="reports">Reports</button>
+                <button class="tab-btn active" onclick="switchTab('academics')">Academics</button>
+                <button class="tab-btn" onclick="switchTab('attendance')">Attendance</button>
+                <button class="tab-btn" onclick="switchTab('subjects')">Subjects</button>
+                <button class="tab-btn" onclick="switchTab('reports')">Reports</button>
             </div>
 
-            <!-- ===== TAB CONTENT - FIXED IDs matching data-tab ===== -->
-            <!-- Academics -->
-            <div class="tab-content active" id="academics">
+            <!-- ============================================
+            TAB CONTENT - IDs match the tab names
+            ============================================ -->
+            
+            <!-- ACADEMICS -->
+            <div id="academics" class="tab-content active">
                 <div class="academics-grid">
                     <div class="grade-card">
                         <h4>Subject Performance</h4>
@@ -777,8 +891,8 @@
                 </div>
             </div>
 
-            <!-- Attendance -->
-            <div class="tab-content" id="attendance">
+            <!-- ATTENDANCE - FIXED WITH PROPER CONTAINER -->
+            <div id="attendance" class="tab-content">
                 <div class="attendance-stats">
                     <div class="attendance-stat">
                         <span class="attendance-percent">92%</span>
@@ -793,14 +907,18 @@
                         <span>Last Month</span>
                     </div>
                 </div>
-                <div style="margin-top:20px; background:var(--white); padding:20px; border-radius:var(--radius);">
-                    <h4 style="margin-bottom:12px; color:var(--gray-900);">Weekly Attendance</h4>
-                    <canvas id="attendanceChart" style="height:200px;"></canvas>
+                
+                <!-- ===== ATTENDANCE CHART - PROPERLY CONTAINED ===== -->
+                <div class="attendance-chart-container">
+                    <h4><i class="fas fa-calendar-check" style="color:var(--primary);"></i> Weekly Attendance</h4>
+                    <div class="attendance-chart-wrapper">
+                        <canvas id="attendanceChart"></canvas>
+                    </div>
                 </div>
             </div>
 
-            <!-- Subjects -->
-            <div class="tab-content" id="subjects">
+            <!-- SUBJECTS -->
+            <div id="subjects" class="tab-content">
                 <div class="subjects-grid">
                     <div class="subject-card">
                         <i class="fas fa-calculator" style="color:#4f46e5;"></i>
@@ -829,8 +947,8 @@
                 </div>
             </div>
 
-            <!-- Reports -->
-            <div class="tab-content" id="reports">
+            <!-- REPORTS -->
+            <div id="reports" class="tab-content">
                 <div class="reports-list">
                     <div class="report-item">
                         <div class="report-info">
@@ -873,13 +991,20 @@
         </div>
     </main>
 
+    <!-- ============================================
+    SCRIPTS
+    ============================================ -->
     <script>
-        // ===== SIDEBAR TOGGLE =====
+        // ============================================
+        // SIDEBAR TOGGLE
+        // ============================================
         document.getElementById('menuToggle').addEventListener('click', () => {
             document.getElementById('sidebar').classList.toggle('open');
         });
 
-        // ===== THEME TOGGLE =====
+        // ============================================
+        // THEME TOGGLE
+        // ============================================
         document.getElementById('themeToggleHeader').addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             updateThemeIcons();
@@ -904,31 +1029,38 @@
             }
         }
 
-        // ===== TABS - FIXED WORKING VERSION =====
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabButtons = document.querySelectorAll('.tab-btn');
-            const tabContents = document.querySelectorAll('.tab-content');
-
-            tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all tabs
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.remove('active'));
-
-                    // Add active class to clicked tab
-                    this.classList.add('active');
-
-                    // Show corresponding content
-                    const tabId = this.getAttribute('data-tab');
-                    const targetContent = document.getElementById(tabId);
-                    if (targetContent) {
-                        targetContent.classList.add('active');
-                    }
-                });
+        // ============================================
+        // TAB SWITCHING - FULLY FIXED
+        // ============================================
+        function switchTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
             });
-        });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            const selected = document.getElementById(tabId);
+            if (selected) {
+                selected.classList.add('active');
+            }
+            
+            // Highlight clicked button
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                if (btn.textContent.toLowerCase().trim() === tabId) {
+                    btn.classList.add('active');
+                }
+            });
+        }
 
-        // ===== CHARTS - Fixed without auto-animation =====
+        // ============================================
+        // CHARTS - NO ANIMATION (FIXED)
+        // ============================================
+        
         // Profile Chart
         const ctx = document.getElementById('profileChart');
         if (ctx) {
@@ -950,19 +1082,35 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        x: { grid: { display: false } },
-                        y: { min: 2.5, max: 4.0, grid: { color: 'rgba(0,0,0,0.05)' } }
+                    plugins: { 
+                        legend: { display: false } 
                     },
+                    scales: {
+                        x: { 
+                            grid: { display: false } 
+                        },
+                        y: { 
+                            min: 2.5, 
+                            max: 4.0, 
+                            grid: { color: 'rgba(0,0,0,0.05)' } 
+                        }
+                    },
+                    // DISABLE ALL ANIMATIONS
                     animation: {
-                        duration: 0 // Disable animation to prevent auto-growth
+                        duration: 0
+                    },
+                    transitions: {
+                        active: {
+                            animation: {
+                                duration: 0
+                            }
+                        }
                     }
                 }
             });
         }
 
-        // Attendance Chart
+        // Attendance Chart - FIXED with proper container
         const attCtx = document.getElementById('attendanceChart');
         if (attCtx) {
             new Chart(attCtx, {
@@ -980,17 +1128,46 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        x: { grid: { display: false } },
-                        y: { min: 0, max: 100, grid: { color: 'rgba(0,0,0,0.05)' } }
+                    plugins: { 
+                        legend: { display: false } 
                     },
+                    scales: {
+                        x: { 
+                            grid: { display: false } 
+                        },
+                        y: { 
+                            min: 0, 
+                            max: 100, 
+                            grid: { color: 'rgba(0,0,0,0.05)' } 
+                        }
+                    },
+                    // DISABLE ALL ANIMATIONS - PREVENTS VERTICAL AUTO-GROWTH
                     animation: {
-                        duration: 0 // Disable animation to prevent auto-growth
+                        duration: 0
+                    },
+                    transitions: {
+                        active: {
+                            animation: {
+                                duration: 0
+                            }
+                        }
                     }
                 }
             });
         }
+
+        // ============================================
+        // INITIALIZE - Ensure first tab is active
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure academics is visible by default
+            switchTab('academics');
+        });
+
+        console.log('✅ Student Profile loaded successfully!');
+        console.log('📊 Charts loaded with animations disabled');
+        console.log('🔗 Tabs working correctly');
+        console.log('📦 Attendance chart properly contained');
     </script>
 </body>
 </html>

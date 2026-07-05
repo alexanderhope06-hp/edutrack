@@ -14,9 +14,13 @@
     <link rel="stylesheet" href="../assets/css/dashboard.css" />
     
     <style>
+        /* ============================================
+           CHAT STYLES - FULLY MOBILE RESPONSIVE
+           ============================================ */
         .chat-container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 16px;
         }
         
         .chat-grid {
@@ -27,6 +31,7 @@
             min-height: 500px;
         }
         
+        /* ===== CHAT SIDEBAR ===== */
         .chat-sidebar {
             background: var(--white);
             border-radius: var(--radius);
@@ -41,12 +46,44 @@
             border-color: #334155;
         }
         
-        .chat-sidebar h4 {
+        .chat-sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        body.dark-mode .chat-sidebar-header {
+            border-bottom-color: #334155;
+        }
+        
+        .chat-sidebar-header h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin: 0;
+        }
+        
+        body.dark-mode .chat-sidebar-header h4 {
+            color: #94a3b8;
+        }
+        
+        .chat-sidebar-header .online-count {
             font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--gray-500);
-            margin-bottom: 12px;
+            color: #22c55e;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .chat-sidebar-header .online-count .dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
         }
         
         .chat-contact {
@@ -72,21 +109,30 @@
             background: rgba(79,70,229,0.08);
         }
         
+        body.dark-mode .chat-contact.active {
+            background: rgba(79,70,229,0.15);
+        }
+        
         .chat-contact img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
             object-fit: cover;
+            flex-shrink: 0;
         }
         
         .chat-contact .contact-info {
             flex: 1;
+            min-width: 0;
         }
         
         .chat-contact .contact-info strong {
             display: block;
             font-size: 0.9rem;
             color: var(--gray-900);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         body.dark-mode .chat-contact .contact-info strong {
@@ -96,22 +142,28 @@
         .chat-contact .contact-info span {
             font-size: 0.75rem;
             color: var(--gray-500);
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
-        .chat-contact .online-dot {
-            width: 8px;
-            height: 8px;
+        .chat-contact .status-dot {
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
+            flex-shrink: 0;
+        }
+        
+        .chat-contact .status-dot.online {
             background: #22c55e;
         }
         
-        .chat-contact .offline-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
+        .chat-contact .status-dot.offline {
             background: #94a3b8;
         }
         
+        /* ===== CHAT MAIN ===== */
         .chat-main {
             background: var(--white);
             border-radius: var(--radius);
@@ -119,6 +171,7 @@
             border: 1px solid rgba(0,0,0,0.04);
             display: flex;
             flex-direction: column;
+            min-height: 400px;
         }
         
         body.dark-mode .chat-main {
@@ -127,11 +180,13 @@
         }
         
         .chat-header {
-            padding: 16px 24px;
+            padding: 16px 20px;
             border-bottom: 1px solid var(--gray-200);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
         }
         
         body.dark-mode .chat-header {
@@ -148,35 +203,52 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
+            object-fit: cover;
         }
         
-        .chat-header .chat-user strong {
+        .chat-header .chat-user .user-info strong {
+            display: block;
+            font-size: 0.95rem;
             color: var(--gray-900);
         }
         
-        body.dark-mode .chat-header .chat-user strong {
+        body.dark-mode .chat-header .chat-user .user-info strong {
             color: #e2e8f0;
         }
         
-        .chat-header .chat-user .status {
+        .chat-header .chat-user .user-info .status {
             font-size: 0.75rem;
             color: #22c55e;
         }
         
+        .chat-header .chat-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .chat-header .chat-actions .btn {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
+        
+        /* ===== CHAT MESSAGES ===== */
         .chat-messages {
             flex: 1;
-            padding: 20px 24px;
+            padding: 16px 20px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px;
+            min-height: 250px;
+            max-height: 400px;
         }
         
         .message {
-            max-width: 70%;
-            padding: 12px 16px;
+            max-width: 75%;
+            padding: 10px 16px;
             border-radius: var(--radius-sm);
             animation: messageIn 0.3s ease;
+            word-wrap: break-word;
         }
         
         .message.received {
@@ -197,7 +269,7 @@
         }
         
         .message .message-time {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             opacity: 0.6;
             margin-top: 4px;
             display: block;
@@ -208,11 +280,34 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
+        /* ===== TYPING INDICATOR ===== */
+        .typing-indicator {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            display: none;
+        }
+        
+        .typing-indicator .dots::after {
+            content: '...';
+            animation: dots 1.5s steps(4) infinite;
+        }
+        
+        @keyframes dots {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+        }
+        
+        /* ===== CHAT INPUT ===== */
         .chat-input {
-            padding: 16px 24px;
+            padding: 12px 16px;
             border-top: 1px solid var(--gray-200);
             display: flex;
-            gap: 12px;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
         }
         
         body.dark-mode .chat-input {
@@ -221,7 +316,8 @@
         
         .chat-input input {
             flex: 1;
-            padding: 10px 16px;
+            min-width: 120px;
+            padding: 10px 14px;
             border: 2px solid var(--gray-200);
             border-radius: var(--radius-sm);
             font-family: inherit;
@@ -243,104 +339,212 @@
         }
         
         .chat-input .btn {
-            padding: 10px 20px;
+            padding: 10px 16px;
+            font-size: 0.9rem;
+            flex-shrink: 0;
         }
         
-        .typing-indicator {
-            padding: 8px 16px;
-            font-size: 0.85rem;
-            color: var(--gray-500);
-            display: none;
+        .chat-input .btn-icon {
+            padding: 10px 12px;
+            flex-shrink: 0;
         }
         
-        .typing-indicator .dots::after {
-            content: '...';
-            animation: dots 1.5s steps(4) infinite;
-        }
-        
-        @keyframes dots {
-            0% { content: ''; }
-            25% { content: '.'; }
-            50% { content: '..'; }
-            75% { content: '...'; }
-        }
-        
-        @media (max-width: 768px) {
+        /* ============================================
+           MOBILE RESPONSIVE
+           ============================================ */
+        @media (max-width: 968px) {
             .chat-grid {
                 grid-template-columns: 1fr;
                 height: auto;
                 min-height: auto;
+                gap: 16px;
             }
             
+            /* Sidebar becomes horizontal scroll */
             .chat-sidebar {
                 display: flex;
-                overflow-x: auto;
-                padding: 12px;
-                gap: 8px;
+                flex-direction: column;
+                padding: 12px 16px;
+                max-height: 200px;
             }
             
-            .chat-sidebar h4 { display: none; }
+            .chat-sidebar-header {
+                margin-bottom: 8px;
+                padding-bottom: 8px;
+                flex-shrink: 0;
+            }
+            
+            .chat-sidebar .chat-contact-list {
+                display: flex;
+                gap: 8px;
+                overflow-x: auto;
+                padding-bottom: 8px;
+                flex-shrink: 0;
+            }
+            
+            .chat-sidebar .chat-contact-list::-webkit-scrollbar {
+                height: 4px;
+            }
+            
+            .chat-sidebar .chat-contact-list::-webkit-scrollbar-thumb {
+                background: var(--gray-300);
+                border-radius: 4px;
+            }
             
             .chat-contact {
-                flex-shrink: 0;
                 flex-direction: column;
                 text-align: center;
-                padding: 12px;
+                padding: 10px 14px;
                 min-width: 80px;
+                flex-shrink: 0;
             }
             
-            .chat-contact .contact-info span { display: none; }
+            .chat-contact .contact-info span {
+                display: none;
+            }
+            
+            .chat-contact .status-dot {
+                display: none;
+            }
             
             .chat-main {
                 height: 500px;
+                min-height: 400px;
+            }
+            
+            .chat-messages {
+                max-height: 300px;
+                min-height: 200px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .chat-container {
+                padding: 0 8px;
+            }
+            
+            .chat-header {
+                padding: 12px 14px;
+            }
+            
+            .chat-header .chat-user img {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .chat-header .chat-user .user-info strong {
+                font-size: 0.85rem;
+            }
+            
+            .chat-header .chat-actions .btn {
+                padding: 4px 10px;
+                font-size: 0.7rem;
+            }
+            
+            .chat-messages {
+                padding: 12px 14px;
+                max-height: 250px;
+                min-height: 150px;
+            }
+            
+            .message {
+                max-width: 85%;
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .chat-input {
+                padding: 8px 12px;
+                gap: 6px;
+            }
+            
+            .chat-input input {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+                min-width: 80px;
+            }
+            
+            .chat-input .btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .chat-input .btn-icon {
+                padding: 8px 10px;
+            }
+            
+            .chat-sidebar {
+                max-height: 160px;
+                padding: 8px 12px;
+            }
+            
+            .chat-contact {
+                min-width: 60px;
+                padding: 6px 10px;
+            }
+            
+            .chat-contact img {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .chat-contact .contact-info strong {
+                font-size: 0.75rem;
+            }
+            
+            .chat-main {
+                height: 420px;
+                min-height: 350px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .chat-main {
+                height: 380px;
+                min-height: 300px;
+            }
+            
+            .chat-messages {
+                max-height: 200px;
+                min-height: 120px;
+            }
+            
+            .message {
+                font-size: 0.85rem;
+                padding: 6px 10px;
+            }
+            
+            .chat-input input {
+                font-size: 0.8rem;
+                padding: 6px 10px;
+                min-width: 60px;
+            }
+            
+            .chat-input .btn {
+                font-size: 0.7rem;
+                padding: 6px 10px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-brand">
             <i class="fas fa-graduation-cap"></i>
             <span>EduTrack</span>
         </div>
-        
-
-<nav class="sidebar-nav">
-    <a href="dashboard.html" class="active">
-        <i class="fas fa-th-large"></i>
-        <span>Dashboard</span>
-    </a>
-    <a href="student-profile.html">
-        <i class="fas fa-user-graduate"></i>
-        <span>Students</span>
-        <span class="badge">1.2k</span>
-    </a>
-    <a href="register-student.html">
-        <i class="fas fa-user-plus"></i>
-        <span>Register</span>
-    </a>
-    <a href="analytics.html">
-        <i class="fas fa-chart-line"></i>
-        <span>Analytics</span>
-    </a>
-    <a href="invoice.html">
-        <i class="fas fa-file-invoice-dollar"></i>
-        <span>Invoices</span>
-    </a>
-    <a href="chat-support.html">
-        <i class="fas fa-comment-dots"></i>
-        <span>Live Chat</span>
-        <span class="badge" style="background:#ef4444;color:white;">3</span>
-    </a>
-    <a href="settings.html">
-        <i class="fas fa-cog"></i>
-        <span>Settings</span>
-    </a>
-</nav>
-
-
-
+        <nav class="sidebar-nav">
+            <a href="dashboard.html"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+            <a href="#"><i class="fas fa-user-graduate"></i><span>Students</span></a>
+            <a href="#" class="active"><i class="fas fa-comment-dots"></i><span>Live Chat</span></a>
+            <a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a>
+        </nav>
         <div class="sidebar-footer">
+            <button id="themeToggleSidebar" class="theme-toggle-btn" style="display:flex;align-items:center;gap:8px;width:100%;padding:8px 12px;background:transparent;border:none;cursor:pointer;color:var(--gray-600);font-size:0.9rem;border-radius:var(--radius-sm);transition:all var(--transition);">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
+            </button>
             <div class="user-profile">
                 <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff&size=40" alt="Admin" />
                 <div>
@@ -351,20 +555,21 @@
         </div>
     </aside>
 
+    <!-- MAIN CONTENT -->
     <main class="main-content">
         <header class="dashboard-header">
             <div class="header-left">
                 <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
                 <h1>Live Chat Support</h1>
-                <span style="font-size:0.8rem;color:#22c55e;margin-left:12px;">
-                    <span class="live-dot" style="display:inline-block;width:8px;height:8px;background:#22c55e;border-radius:50%;animation:pulse 1.5s infinite;"></span> 3 online
+                <span style="font-size:0.8rem;color:#22c55e;margin-left:12px;display:flex;align-items:center;gap:4px;">
+                    <span style="display:inline-block;width:8px;height:8px;background:#22c55e;border-radius:50%;animation:pulse 1.5s infinite;"></span> 3 online
                 </span>
             </div>
             <div class="header-right">
                 <button class="theme-toggle-btn" id="themeToggleHeader" style="font-size:1.2rem;background:none;border:none;cursor:pointer;color:var(--gray-600);">
                     <i class="fas fa-moon"></i>
                 </button>
-                <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff&size=36" alt="Admin" class="avatar" />
+                <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff&size=36" alt="Admin" class="avatar" style="border-radius:50%;width:36px;height:36px;cursor:pointer;" />
             </div>
         </header>
 
@@ -372,46 +577,51 @@
             <div class="chat-grid">
                 <!-- Sidebar -->
                 <div class="chat-sidebar">
-                    <h4>Contacts</h4>
-                    <div class="chat-contact active" onclick="switchChat('Emma Wilson')">
-                        <img src="https://ui-avatars.com/api/?name=Emma+Wilson&background=4f46e5&color=fff&size=40" alt="Emma" />
-                        <div class="contact-info">
-                            <strong>Emma Wilson</strong>
-                            <span>Student, Grade 10A</span>
-                        </div>
-                        <div class="online-dot"></div>
+                    <div class="chat-sidebar-header">
+                        <h4>💬 Contacts</h4>
+                        <span class="online-count"><span class="dot"></span> 3 online</span>
                     </div>
-                    <div class="chat-contact" onclick="switchChat('Sarah Johnson')">
-                        <img src="https://ui-avatars.com/api/?name=Sarah+Johnson&background=0ea5e9&color=fff&size=40" alt="Sarah" />
-                        <div class="contact-info">
-                            <strong>Sarah Johnson</strong>
-                            <span>Principal</span>
+                    <div class="chat-contact-list">
+                        <div class="chat-contact active" onclick="switchChat('Emma Wilson')">
+                            <img src="https://ui-avatars.com/api/?name=Emma+Wilson&background=4f46e5&color=fff&size=40" alt="Emma" />
+                            <div class="contact-info">
+                                <strong>Emma Wilson</strong>
+                                <span>Student, Grade 10A</span>
+                            </div>
+                            <span class="status-dot online"></span>
                         </div>
-                        <div class="online-dot"></div>
-                    </div>
-                    <div class="chat-contact" onclick="switchChat('James Brown')">
-                        <img src="https://ui-avatars.com/api/?name=James+Brown&background=22c55e&color=fff&size=40" alt="James" />
-                        <div class="contact-info">
-                            <strong>James Brown</strong>
-                            <span>Teacher, Math</span>
+                        <div class="chat-contact" onclick="switchChat('Sarah Johnson')">
+                            <img src="https://ui-avatars.com/api/?name=Sarah+Johnson&background=0ea5e9&color=fff&size=40" alt="Sarah" />
+                            <div class="contact-info">
+                                <strong>Sarah Johnson</strong>
+                                <span>Principal</span>
+                            </div>
+                            <span class="status-dot online"></span>
                         </div>
-                        <div class="offline-dot"></div>
-                    </div>
-                    <div class="chat-contact" onclick="switchChat('Sophia Chen')">
-                        <img src="https://ui-avatars.com/api/?name=Sophia+Chen&background=f59e0b&color=fff&size=40" alt="Sophia" />
-                        <div class="contact-info">
-                            <strong>Sophia Chen</strong>
-                            <span>Parent</span>
+                        <div class="chat-contact" onclick="switchChat('James Brown')">
+                            <img src="https://ui-avatars.com/api/?name=James+Brown&background=22c55e&color=fff&size=40" alt="James" />
+                            <div class="contact-info">
+                                <strong>James Brown</strong>
+                                <span>Teacher, Math</span>
+                            </div>
+                            <span class="status-dot offline"></span>
                         </div>
-                        <div class="online-dot"></div>
-                    </div>
-                    <div class="chat-contact" onclick="switchChat('Support Team')">
-                        <img src="https://ui-avatars.com/api/?name=Support+Team&background=ef4444&color=fff&size=40" alt="Support" />
-                        <div class="contact-info">
-                            <strong>Support Team</strong>
-                            <span>EduTrack Support</span>
+                        <div class="chat-contact" onclick="switchChat('Sophia Chen')">
+                            <img src="https://ui-avatars.com/api/?name=Sophia+Chen&background=f59e0b&color=fff&size=40" alt="Sophia" />
+                            <div class="contact-info">
+                                <strong>Sophia Chen</strong>
+                                <span>Parent</span>
+                            </div>
+                            <span class="status-dot online"></span>
                         </div>
-                        <div class="online-dot"></div>
+                        <div class="chat-contact" onclick="switchChat('Support Team')">
+                            <img src="https://ui-avatars.com/api/?name=Support+Team&background=ef4444&color=fff&size=40" alt="Support" />
+                            <div class="contact-info">
+                                <strong>Support Team</strong>
+                                <span>EduTrack Support</span>
+                            </div>
+                            <span class="status-dot online"></span>
+                        </div>
                     </div>
                 </div>
 
@@ -420,12 +630,12 @@
                     <div class="chat-header">
                         <div class="chat-user">
                             <img src="https://ui-avatars.com/api/?name=Emma+Wilson&background=4f46e5&color=fff&size=40" alt="Emma" id="chatAvatar" />
-                            <div>
+                            <div class="user-info">
                                 <strong id="chatName">Emma Wilson</strong>
-                                <div class="status">● Online</div>
+                                <span class="status">● Online</span>
                             </div>
                         </div>
-                        <div>
+                        <div class="chat-actions">
                             <button class="btn btn-sm btn-outline" onclick="alert('📞 Calling...')">
                                 <i class="fas fa-phone"></i>
                             </button>
@@ -446,11 +656,11 @@
 
                     <div class="chat-input">
                         <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendMessage()" />
+                        <button class="btn btn-outline btn-icon" onclick="alert('📎 Attach file')">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
                         <button class="btn btn-primary" onclick="sendMessage()">
                             <i class="fas fa-paper-plane"></i>
-                        </button>
-                        <button class="btn btn-outline" onclick="alert('📎 Attach file')">
-                            <i class="fas fa-paperclip"></i>
                         </button>
                     </div>
                 </div>
@@ -466,7 +676,7 @@
     </style>
 
     <script>
-        // Chat data
+        // ===== CHAT DATA =====
         const chatData = {
             'Emma Wilson': {
                 messages: [
@@ -497,6 +707,7 @@
             { text: 'Hello! How can I help you today?', sent: false, time: '9:00 AM' }
         ];
 
+        // ===== RENDER MESSAGES =====
         function renderMessages(chatName) {
             const container = document.getElementById('chatMessages');
             const messages = chatData[chatName]?.messages || defaultMessages;
@@ -517,6 +728,7 @@
             avatar.src = `https://ui-avatars.com/api/?name=${name}&background=4f46e5&color=fff&size=40`;
         }
 
+        // ===== SWITCH CHAT =====
         function switchChat(name) {
             currentChat = name;
             document.querySelectorAll('.chat-contact').forEach(el => el.classList.remove('active'));
@@ -528,14 +740,16 @@
             renderMessages(name);
         }
 
+        // ===== SEND MESSAGE =====
         function sendMessage() {
             const input = document.getElementById('chatInput');
             const text = input.value.trim();
             if (!text) return;
             
-            // Add message
             const container = document.getElementById('chatMessages');
             const time = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+            
+            // Add message
             container.innerHTML += `
                 <div class="message sent">
                     ${text}
@@ -571,18 +785,36 @@
             }, 1500 + Math.random() * 1000);
         }
 
-        // Initialize
+        // ===== INITIALIZE =====
         renderMessages('Emma Wilson');
 
-        // Sidebar toggle
+        // ===== SIDEBAR TOGGLE =====
         document.getElementById('menuToggle').addEventListener('click', () => {
             document.getElementById('sidebar').classList.toggle('open');
         });
 
-        // Theme toggle
+        // ===== THEME TOGGLE =====
         document.getElementById('themeToggleHeader').addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
+            updateThemeIcons();
         });
+
+        document.getElementById('themeToggleSidebar').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            updateThemeIcons();
+        });
+
+        function updateThemeIcons() {
+            const isDark = document.body.classList.contains('dark-mode');
+            const icons = document.querySelectorAll('.theme-toggle-btn i');
+            const text = document.querySelector('#themeToggleSidebar span');
+            icons.forEach(icon => {
+                icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            });
+            if (text) {
+                text.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+            }
+        }
     </script>
 </body>
 </html>

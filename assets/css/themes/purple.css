@@ -7,13 +7,23 @@
 
 .sidebar-brand i,
 .nav-brand i,
-.auth-logo i { color: #7c3aed; }
+.auth-logo i,
+.profile-stat .stat-value,
+.hero-content h1 span,
+.stat-icon[style*="#4f46e5"] { 
+    color: #7c3aed !important; 
+}
 
 .btn-primary {
     background: #7c3aed;
     box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
 }
-
 .btn-primary:hover { background: #6d28d9; }
 
-.stat-icon[style*="#4f46e5"] { background: #ede9fe !important; color: #7c3aed !important; }
+.stat-icon[style*="#4f46e5"] { 
+    background: #ede9fe !important; 
+    color: #7c3aed !important; 
+}
+
+.profile-avatar-wrapper .avatar-img { border-color: #7c3aed; }
+.tab-btn.active { background: #7c3aed; }
