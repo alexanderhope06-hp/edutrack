@@ -1,0 +1,526 @@
+/* ===== TABLETS ===== */
+@media (max-width: 1024px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .hero-content p {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+/* ===== MOBILE (FIXED) ===== */
+@media (max-width: 768px) {
+    /* ===== NAV FIXES ===== */
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        padding: 16px 24px;
+        gap: 4px;
+        border-bottom: 1px solid var(--gray-200);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: all 0.3s ease;
+        opacity: 0;
+        pointer-events: none;
+        box-shadow: var(--shadow-lg);
+    }
+    
+    body.dark-mode .nav-menu {
+        background: #1e293b;
+        border-bottom-color: #334155;
+    }
+    
+    .nav-menu.open {
+        transform: scaleY(1);
+        opacity: 1;
+        pointer-events: all;
+    }
+    
+    .nav-menu a {
+        padding: 12px 16px;
+        width: 100%;
+        border-radius: var(--radius-sm);
+    }
+    
+    .nav-actions .btn {
+        display: none;
+    }
+    
+    /* ===== CONTAINER FIXES ===== */
+    .container {
+        padding: 0 16px !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+    
+    /* ===== HERO SECTION FIXES ===== */
+    .hero {
+        padding: 120px 16px 60px !important;
+        overflow: hidden !important;
+    }
+    
+    .hero-container {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 30px !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+    
+    .hero-content {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem !important;
+        line-height: 1.2 !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        max-width: 100% !important;
+    }
+    
+    .hero-content h1 span {
+        display: inline !important;
+        white-space: normal !important;
+    }
+    
+    .hero-content p {
+        font-size: 0.95rem !important;
+        max-width: 100% !important;
+        padding: 0 4px !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    /* ===== HERO BUTTONS FIX ===== */
+    .hero-buttons {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    .hero-buttons .btn {
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-content: center !important;
+        padding: 14px 20px !important;
+        font-size: 1rem !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        box-sizing: border-box !important;
+    }
+    
+    .hero-buttons .btn i {
+        flex-shrink: 0 !important;
+    }
+    
+    /* ===== HERO PREVIEW FIX ===== */
+    .hero-dashboard-preview {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 16px !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+    }
+    
+    .preview-stats {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+    
+    .preview-stat {
+        padding: 10px 8px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .preview-stat .stat-number {
+        font-size: 1.2rem !important;
+    }
+    
+    .preview-chart {
+        height: 100px !important;
+        width: 100% !important;
+    }
+    
+    /* ===== STATS SECTION FIXES ===== */
+    .stats-section {
+        padding: 50px 0 !important;
+        overflow: hidden !important;
+    }
+    
+    .section-header {
+        padding: 0 4px !important;
+    }
+    
+    .section-header h2 {
+        font-size: 1.5rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    .section-header p {
+        font-size: 0.95rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    .stats-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    .stat-card {
+        padding: 16px !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+    
+    .stat-icon {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 1.1rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .stat-info {
+        width: 100% !important;
+    }
+    
+    .stat-info .stat-number {
+        font-size: 1.4rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    .stat-info .stat-label {
+        font-size: 0.8rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    .stat-info .stat-change {
+        font-size: 0.7rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    /* ===== CHARTS SECTION FIXES ===== */
+    .charts-section {
+        padding: 50px 0 !important;
+        overflow: hidden !important;
+    }
+    
+    .charts-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    .chart-card {
+        padding: 16px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+    
+    .chart-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+    
+    .chart-header h3 {
+        font-size: 1rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    .chart-legend {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .chart-filter {
+        font-size: 0.8rem !important;
+        padding: 4px 10px !important;
+    }
+    
+    .chart-wrapper {
+        height: 200px !important;
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+    
+    /* ===== FEATURES SECTION FIXES ===== */
+    .features-section {
+        padding: 50px 0 !important;
+        overflow: hidden !important;
+    }
+    
+    .features-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        width: 100% !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+    
+    .feature-card {
+        padding: 24px 16px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+    
+    .feature-card h3 {
+        font-size: 1rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    .feature-card p {
+        font-size: 0.9rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    .feature-icon {
+        width: 56px !important;
+        height: 56px !important;
+        font-size: 1.3rem !important;
+    }
+    
+    .features-cta {
+        margin-top: 32px !important;
+        width: 100% !important;
+    }
+    
+    .features-cta .btn {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 14px 20px !important;
+        font-size: 1rem !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* ===== FOOTER FIXES ===== */
+    .footer {
+        padding: 40px 16px 20px !important;
+        overflow: hidden !important;
+    }
+    
+    .footer-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+    
+    .footer-social {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+    }
+    
+    .footer-bottom {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 12px !important;
+        padding-top: 20px !important;
+    }
+    
+    .footer-bottom-links {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 12px !important;
+    }
+    
+    .footer-bottom-links a {
+        font-size: 0.8rem !important;
+    }
+    
+    /* ===== THEME TOGGLE FIX ===== */
+    .theme-toggle-wrapper {
+        top: 12px !important;
+        right: 12px !important;
+        z-index: 1001 !important;
+    }
+    
+    .theme-toggle {
+        padding: 6px 12px !important;
+        font-size: 0.75rem !important;
+        gap: 4px !important;
+    }
+    
+    .theme-toggle span {
+        display: none !important;
+    }
+    
+    /* ===== SCROLLBAR FIX ===== */
+    * {
+        -webkit-box-sizing: border-box !important;
+        -moz-box-sizing: border-box !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* ===== IMAGES & MEDIA ===== */
+    img, canvas, svg {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
+
+/* ===== SMALL MOBILE (FIXED) ===== */
+@media (max-width: 480px) {
+    .hero {
+        padding: 110px 12px 50px !important;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    .hero-content p {
+        font-size: 0.85rem !important;
+    }
+    
+    .hero-buttons .btn {
+        padding: 12px 16px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+    }
+    
+    .stat-card {
+        padding: 12px !important;
+    }
+    
+    .stat-info .stat-number {
+        font-size: 1.2rem !important;
+    }
+    
+    .stat-info .stat-label {
+        font-size: 0.7rem !important;
+    }
+    
+    .section-header h2 {
+        font-size: 1.3rem !important;
+    }
+    
+    .preview-stats {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .chart-wrapper {
+        height: 170px !important;
+    }
+    
+    .footer {
+        padding: 30px 12px 16px !important;
+    }
+    
+    .footer-brand span {
+        font-size: 1.1rem !important;
+    }
+}
+
+/* ===== EXTRA SMALL (Phones < 380px) ===== */
+@media (max-width: 380px) {
+    .hero-content h1 {
+        font-size: 1.3rem !important;
+    }
+    
+    .hero-buttons .btn {
+        font-size: 0.8rem !important;
+        padding: 10px 12px !important;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .stat-card {
+        flex-direction: row !important;
+        text-align: left !important;
+        padding: 12px !important;
+    }
+    
+    .stat-icon {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .stat-info .stat-number {
+        font-size: 1rem !important;
+    }
+    
+    .preview-stat .stat-number {
+        font-size: 1rem !important;
+    }
+}

@@ -1,0 +1,19 @@
+/* ===== ORANGE THEME ===== */
+:root {
+    --primary: #ea580c;
+    --primary-dark: #c2410c;
+    --primary-light: #f97316;
+}
+
+.sidebar-brand i,
+.nav-brand i,
+.auth-logo i { color: #ea580c; }
+
+.btn-primary {
+    background: #ea580c;
+    box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
+}
+
+.btn-primary:hover { background: #c2410c; }
+
+.stat-icon[style*="#4f46e5"] { background: #fff7ed !important; color: #ea580c !important; }
