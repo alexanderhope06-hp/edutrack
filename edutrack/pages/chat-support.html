@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Chat - EduTrack</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+    
+    <style>
+        .chat-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .chat-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 24px;
+            height: calc(100vh - 200px);
+            min-height: 500px;
+        }
+        
+        .chat-sidebar {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+            overflow-y: auto;
+        }
+        
+        body.dark-mode .chat-sidebar {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        .chat-sidebar h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-500);
+            margin-bottom: 12px;
+        }
+        
+        .chat-contact {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all var(--transition);
+            margin-bottom: 2px;
+        }
+        
+        .chat-contact:hover {
+            background: var(--gray-50);
+        }
+        
+        body.dark-mode .chat-contact:hover {
+            background: #0f172a;
+        }
+        
+        .chat-contact.active {
+            background: rgba(79,70,229,0.08);
+        }
+        
+        .chat-contact img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .chat-contact .contact-info {
+            flex: 1;
+        }
+        
+        .chat-contact .contact-info strong {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--gray-900);
+        }
+        
+        body.dark-mode .chat-contact .contact-info strong {
+            color: #e2e8f0;
+        }
+        
+        .chat-contact .contact-info span {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+        
+        .chat-contact .online-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+        }
+        
+        .chat-contact .offline-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #94a3b8;
+        }
+        
+        .chat-main {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        body.dark-mode .chat-main {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        .chat-header {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        body.dark-mode .chat-header {
+            border-bottom-color: #334155;
+        }
+        
+        .chat-header .chat-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .chat-header .chat-user img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        
+        .chat-header .chat-user strong {
+            color: var(--gray-900);
+        }
+        
+        body.dark-mode .chat-header .chat-user strong {
+            color: #e2e8f0;
+        }
+        
+        .chat-header .chat-user .status {
+            font-size: 0.75rem;
+            color: #22c55e;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 20px 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .message {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            animation: messageIn 0.3s ease;
+        }
+        
+        .message.received {
+            background: var(--gray-100);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        
+        body.dark-mode .message.received {
+            background: #0f172a;
+        }
+        
+        .message.sent {
+            background: var(--primary);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .message .message-time {
+            font-size: 0.7rem;
+            opacity: 0.6;
+            margin-top: 4px;
+            display: block;
+        }
+        
+        @keyframes messageIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .chat-input {
+            padding: 16px 24px;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            gap: 12px;
+        }
+        
+        body.dark-mode .chat-input {
+            border-top-color: #334155;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 10px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: var(--gray-50);
+            color: var(--gray-900);
+            transition: all var(--transition);
+        }
+        
+        body.dark-mode .chat-input input {
+            background: #0f172a;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        
+        .chat-input input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .chat-input .btn {
+            padding: 10px 20px;
+        }
+        
+        .typing-indicator {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            display: none;
+        }
+        
+        .typing-indicator .dots::after {
+            content: '...';
+            animation: dots 1.5s steps(4) infinite;
+        }
+        
+        @keyframes dots {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+        }
+        
+        @media (max-width: 768px) {
+            .chat-grid {
+                grid-template-columns: 1fr;
+                height: auto;
+                min-height: auto;
+            }
+            
+            .chat-sidebar {
+                display: flex;
+                overflow-x: auto;
+                padding: 12px;
+                gap: 8px;
+            }
+            
+            .chat-sidebar h4 { display: none; }
+            
+            .chat-contact {
+                flex-shrink: 0;
+                flex-direction: column;
+                text-align: center;
+                padding: 12px;
+                min-width: 80px;
+            }
+            
+            .chat-contact .contact-info span { display: none; }
+            
+            .chat-main {
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <i class="fas fa-graduation-cap"></i>
+            <span>EduTrack</span>
+        </div>
+        
+
+<nav class="sidebar-nav">
+    <a href="dashboard.html" class="active">
+        <i class="fas fa-th-large"></i>
+        <span>Dashboard</span>
+    </a>
+    <a href="student-profile.html">
+        <i class="fas fa-user-graduate"></i>
+        <span>Students</span>
+        <span class="badge">1.2k</span>
+    </a>
+    <a href="register-student.html">
+        <i class="fas fa-user-plus"></i>
+        <span>Register</span>
+    </a>
+    <a href="analytics.html">
+        <i class="fas fa-chart-line"></i>
+        <span>Analytics</span>
+    </a>
+    <a href="invoice.html">
+        <i class="fas fa-file-invoice-dollar"></i>
+        <span>Invoices</span>
+    </a>
+    <a href="chat-support.html">
+        <i class="fas fa-comment-dots"></i>
+        <span>Live Chat</span>
+        <span class="badge" style="background:#ef4444;color:white;">3</span>
+    </a>
+    <a href="settings.html">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+    </a>
+</nav>
+
+
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff&size=40" alt="Admin" />
+                <div>
+                    <strong>Admin User</strong>
+                    <span>Administrator</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+                <h1>Live Chat Support</h1>
+                <span style="font-size:0.8rem;color:#22c55e;margin-left:12px;">
+                    <span class="live-dot" style="display:inline-block;width:8px;height:8px;background:#22c55e;border-radius:50%;animation:pulse 1.5s infinite;"></span> 3 online
+                </span>
+            </div>
+            <div class="header-right">
+                <button class="theme-toggle-btn" id="themeToggleHeader" style="font-size:1.2rem;background:none;border:none;cursor:pointer;color:var(--gray-600);">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff&size=36" alt="Admin" class="avatar" />
+            </div>
+        </header>
+
+        <div class="chat-container">
+            <div class="chat-grid">
+                <!-- Sidebar -->
+                <div class="chat-sidebar">
+                    <h4>Contacts</h4>
+                    <div class="chat-contact active" onclick="switchChat('Emma Wilson')">
+                        <img src="https://ui-avatars.com/api/?name=Emma+Wilson&background=4f46e5&color=fff&size=40" alt="Emma" />
+                        <div class="contact-info">
+                            <strong>Emma Wilson</strong>
+                            <span>Student, Grade 10A</span>
+                        </div>
+                        <div class="online-dot"></div>
+                    </div>
+                    <div class="chat-contact" onclick="switchChat('Sarah Johnson')">
+                        <img src="https://ui-avatars.com/api/?name=Sarah+Johnson&background=0ea5e9&color=fff&size=40" alt="Sarah" />
+                        <div class="contact-info">
+                            <strong>Sarah Johnson</strong>
+                            <span>Principal</span>
+                        </div>
+                        <div class="online-dot"></div>
+                    </div>
+                    <div class="chat-contact" onclick="switchChat('James Brown')">
+                        <img src="https://ui-avatars.com/api/?name=James+Brown&background=22c55e&color=fff&size=40" alt="James" />
+                        <div class="contact-info">
+                            <strong>James Brown</strong>
+                            <span>Teacher, Math</span>
+                        </div>
+                        <div class="offline-dot"></div>
+                    </div>
+                    <div class="chat-contact" onclick="switchChat('Sophia Chen')">
+                        <img src="https://ui-avatars.com/api/?name=Sophia+Chen&background=f59e0b&color=fff&size=40" alt="Sophia" />
+                        <div class="contact-info">
+                            <strong>Sophia Chen</strong>
+                            <span>Parent</span>
+                        </div>
+                        <div class="online-dot"></div>
+                    </div>
+                    <div class="chat-contact" onclick="switchChat('Support Team')">
+                        <img src="https://ui-avatars.com/api/?name=Support+Team&background=ef4444&color=fff&size=40" alt="Support" />
+                        <div class="contact-info">
+                            <strong>Support Team</strong>
+                            <span>EduTrack Support</span>
+                        </div>
+                        <div class="online-dot"></div>
+                    </div>
+                </div>
+
+                <!-- Chat Area -->
+                <div class="chat-main">
+                    <div class="chat-header">
+                        <div class="chat-user">
+                            <img src="https://ui-avatars.com/api/?name=Emma+Wilson&background=4f46e5&color=fff&size=40" alt="Emma" id="chatAvatar" />
+                            <div>
+                                <strong id="chatName">Emma Wilson</strong>
+                                <div class="status">● Online</div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-sm btn-outline" onclick="alert('📞 Calling...')">
+                                <i class="fas fa-phone"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline" onclick="alert('📹 Video call coming soon!')">
+                                <i class="fas fa-video"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="chat-messages" id="chatMessages">
+                        <!-- Messages rendered by JavaScript -->
+                    </div>
+
+                    <div class="typing-indicator" id="typingIndicator">
+                        <span>Emma is typing</span>
+                        <span class="dots"></span>
+                    </div>
+
+                    <div class="chat-input">
+                        <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendMessage()" />
+                        <button class="btn btn-primary" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                        <button class="btn btn-outline" onclick="alert('📎 Attach file')">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+    </style>
+
+    <script>
+        // Chat data
+        const chatData = {
+            'Emma Wilson': {
+                messages: [
+                    { text: 'Hi! I need help with my grades.', sent: false, time: '10:30 AM' },
+                    { text: 'Sure, I can help with that! What do you need?', sent: true, time: '10:32 AM' },
+                    { text: 'I want to check my math score.', sent: false, time: '10:33 AM' },
+                    { text: 'Let me check that for you... Your math score is 92%. Great job!', sent: true, time: '10:35 AM' },
+                    { text: 'Thank you so much! 😊', sent: false, time: '10:36 AM' }
+                ]
+            },
+            'Sarah Johnson': {
+                messages: [
+                    { text: 'Good morning! When is the next staff meeting?', sent: false, time: '9:00 AM' },
+                    { text: 'Good morning! The meeting is scheduled for Friday at 2 PM.', sent: true, time: '9:02 AM' }
+                ]
+            },
+            'Sophia Chen': {
+                messages: [
+                    { text: 'My daughter forgot her homework. Can you help?', sent: false, time: '8:15 AM' },
+                    { text: 'Of course! I\'ll make sure she gets the materials.', sent: true, time: '8:17 AM' },
+                    { text: 'Thank you so much!', sent: false, time: '8:18 AM' }
+                ]
+            }
+        };
+
+        let currentChat = 'Emma Wilson';
+        const defaultMessages = [
+            { text: 'Hello! How can I help you today?', sent: false, time: '9:00 AM' }
+        ];
+
+        function renderMessages(chatName) {
+            const container = document.getElementById('chatMessages');
+            const messages = chatData[chatName]?.messages || defaultMessages;
+            
+            container.innerHTML = messages.map(msg => `
+                <div class="message ${msg.sent ? 'sent' : 'received'}">
+                    ${msg.text}
+                    <span class="message-time">${msg.time}</span>
+                </div>
+            `).join('');
+            
+            container.scrollTop = container.scrollHeight;
+            
+            // Update header
+            document.getElementById('chatName').textContent = chatName;
+            const avatar = document.getElementById('chatAvatar');
+            const name = chatName.replace(' ', '+');
+            avatar.src = `https://ui-avatars.com/api/?name=${name}&background=4f46e5&color=fff&size=40`;
+        }
+
+        function switchChat(name) {
+            currentChat = name;
+            document.querySelectorAll('.chat-contact').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.chat-contact').forEach(el => {
+                if (el.querySelector('.contact-info strong')?.textContent === name) {
+                    el.classList.add('active');
+                }
+            });
+            renderMessages(name);
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            // Add message
+            const container = document.getElementById('chatMessages');
+            const time = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+            container.innerHTML += `
+                <div class="message sent">
+                    ${text}
+                    <span class="message-time">${time}</span>
+                </div>
+            `;
+            
+            input.value = '';
+            container.scrollTop = container.scrollHeight;
+            
+            // Show typing indicator
+            document.getElementById('typingIndicator').style.display = 'block';
+            
+            // Simulate reply
+            setTimeout(() => {
+                document.getElementById('typingIndicator').style.display = 'none';
+                const replies = [
+                    'That\'s great! Let me look into that for you.',
+                    'I understand. Let me help you with that.',
+                    'Thanks for your message! I\'ll get back to you shortly.',
+                    'That\'s a good question. Let me find the answer.',
+                    'I appreciate you reaching out! How can I assist?'
+                ];
+                const reply = replies[Math.floor(Math.random() * replies.length)];
+                const replyTime = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                container.innerHTML += `
+                    <div class="message received">
+                        ${reply}
+                        <span class="message-time">${replyTime}</span>
+                    </div>
+                `;
+                container.scrollTop = container.scrollHeight;
+            }, 1500 + Math.random() * 1000);
+        }
+
+        // Initialize
+        renderMessages('Emma Wilson');
+
+        // Sidebar toggle
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // Theme toggle
+        document.getElementById('themeToggleHeader').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
