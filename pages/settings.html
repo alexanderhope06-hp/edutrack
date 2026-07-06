@@ -348,49 +348,6 @@
     </style>
 </head>
 <body>
-
-
-<div class="theme-selector">
-    <h4>Choose Theme</h4>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;">
-        <button class="btn" style="background:#4f46e5;color:white;" onclick="setTheme('default')">
-            <i class="fas fa-circle"></i> Purple (Default)
-        </button>
-        <button class="btn" style="background:#7c3aed;color:white;" onclick="setTheme('purple')">
-            <i class="fas fa-circle"></i> Violet
-        </button>
-        <button class="btn" style="background:#059669;color:white;" onclick="setTheme('green')">
-            <i class="fas fa-circle"></i> Green
-        </button>
-        <button class="btn" style="background:#ea580c;color:white;" onclick="setTheme('orange')">
-            <i class="fas fa-circle"></i> Orange
-        </button>
-    </div>
-</div>
-
-<script>
-function setTheme(themeName) {
-    // Remove existing theme links
-    document.querySelectorAll('link[data-theme]').forEach(link => {
-        link.remove();
-    });
-    
-    // Apply new theme if not default
-    if (themeName !== 'default') {
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = `../assets/css/themes/${themeName}.css`;
-        link.dataset.theme = true;
-        document.head.appendChild(link);
-    }
-    
-    localStorage.setItem('edutrack-theme', themeName);
-    alert(`🎨 Theme changed to ${themeName.charAt(0).toUpperCase() + themeName.slice(1)}!`);
-}
-</script>
-
-
-
     <!-- ===== SIDEBAR ===== -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-brand">
@@ -411,9 +368,9 @@ function setTheme(themeName) {
                 <span>Dark Mode</span>
             </button>
             <div class="user-profile">
-                <img src="https://ui-avatars.com/api/?name=Purple+Cipher&background=4f46e5&color=fff&size=40" alt="Admin" />
+                <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff&size=40" alt="Admin" />
                 <div>
-                    <strong>Purple Cipher</strong>
+                    <strong>Admin User</strong>
                     <span>Administrator</span>
                 </div>
             </div>
@@ -433,7 +390,7 @@ function setTheme(themeName) {
                 <button class="theme-toggle-btn" id="themeToggleHeader" style="font-size:1.2rem;background:none;border:none;cursor:pointer;color:var(--gray-600);transition:all var(--transition);">
                     <i class="fas fa-moon"></i>
                 </button>
-                <img src="https://ui-avatars.com/api/?name=Purple+Cipher&background=4f46e5&color=fff&size=36" alt="Admin" class="avatar" style="border-radius:50%;width:36px;height:36px;cursor:pointer;" />
+                <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff&size=36" alt="Admin" class="avatar" style="border-radius:50%;width:36px;height:36px;cursor:pointer;" />
             </div>
         </header>
 
@@ -474,7 +431,7 @@ function setTheme(themeName) {
                         <div class="form-group">
                             <label>Profile Picture</label>
                             <div style="display:flex;align-items:center;gap:16px;">
-                                <img src="https://ui-avatars.com/api/?name=Precious+M'kwapatila&background=4f46e5&color=fff&size=80" alt="Profile" style="border-radius:50%;width:80px;height:80px;border:3px solid var(--primary);" />
+                                <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff&size=80" alt="Profile" style="border-radius:50%;width:80px;height:80px;border:3px solid var(--primary);" />
                                 <div>
                                     <button class="btn btn-sm btn-primary" onclick="alert('📸 Upload profile picture')">
                                         <i class="fas fa-upload"></i> Upload
@@ -489,25 +446,25 @@ function setTheme(themeName) {
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Full Name</label>
-                                <input type="text" value="Precious M'kwapatila" />
+                                <input type="text" value="Admin User" />
                             </div>
                             <div class="form-group">
                                 <label>Email Address</label>
-                                <input type="email" value="principal@school.com" />
+                                <input type="email" value="admin@school.com" />
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Phone Number</label>
-                                <input type="tel" value="+265 999 76 87 45" />
+                                <input type="tel" value="+1 (555) 123-4567" />
                             </div>
                             <div class="form-group">
                                 <label>Role</label>
                                 <select>
-                                    <option>Administrator</option>
+                                    <option selected>Administrator</option>
                                     <option>Teacher</option>
-                                    <option selected>Principal</option>
+                                    <option>Principal</option>
                                     <option>Staff</option>
                                 </select>
                             </div>
