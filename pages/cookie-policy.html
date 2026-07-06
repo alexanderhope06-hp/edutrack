@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookie Policy - EduTrack</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+
+    <style>
+        .legal-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        
+        .legal-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 48px 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        
+        body.dark-mode .legal-card {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        .legal-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid var(--gray-200);
+        }
+        
+        body.dark-mode .legal-header {
+            border-bottom-color: #334155;
+        }
+        
+        .legal-header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+        
+        body.dark-mode .legal-header h1 {
+            color: #e2e8f0;
+        }
+        
+        .legal-header p {
+            color: var(--gray-500);
+            font-size: 0.95rem;
+        }
+        
+        .legal-header .last-updated {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 4px 16px;
+            background: var(--gray-100);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--gray-600);
+        }
+        
+        body.dark-mode .legal-header .last-updated {
+            background: #0f172a;
+            color: #94a3b8;
+        }
+        
+        .legal-content h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-top: 32px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        body.dark-mode .legal-content h2 {
+            color: #e2e8f0;
+        }
+        
+        .legal-content h2 i {
+            color: var(--primary);
+            font-size: 1.1rem;
+            width: 24px;
+        }
+        
+        .legal-content h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        
+        body.dark-mode .legal-content h3 {
+            color: #cbd5e1;
+        }
+        
+        .legal-content p {
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        
+        body.dark-mode .legal-content p {
+            color: #cbd5e1;
+        }
+        
+        .legal-content ul {
+            padding-left: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .legal-content ul li {
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 6px;
+        }
+        
+        body.dark-mode .legal-content ul li {
+            color: #cbd5e1;
+        }
+        
+        .cookie-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0 24px;
+            font-size: 0.9rem;
+        }
+        
+        .cookie-table th {
+            text-align: left;
+            padding: 12px 16px;
+            background: var(--gray-50);
+            font-weight: 600;
+            color: var(--gray-600);
+            border-bottom: 2px solid var(--gray-200);
+        }
+        
+        body.dark-mode .cookie-table th {
+            background: #0f172a;
+            color: #94a3b8;
+            border-bottom-color: #334155;
+        }
+        
+        .cookie-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--gray-100);
+            color: var(--gray-700);
+        }
+        
+        body.dark-mode .cookie-table td {
+            border-bottom-color: #334155;
+            color: #cbd5e1;
+        }
+        
+        .cookie-table .badge {
+            padding: 2px 10px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .badge-essential { background: #dcfce7; color: #166534; }
+        .badge-functional { background: #dbeafe; color: #1e40af; }
+        .badge-analytics { background: #fef3c7; color: #92400e; }
+        .badge-marketing { background: #fce4ec; color: #c62828; }
+        
+        body.dark-mode .badge-essential { background: #064e3b; color: #86efac; }
+        body.dark-mode .badge-functional { background: #1e3a5f; color: #93c5fd; }
+        body.dark-mode .badge-analytics { background: #78350f; color: #fcd34d; }
+        body.dark-mode .badge-marketing { background: #7f1d1d; color: #fca5a5; }
+        
+        .legal-content .highlight-box {
+            background: var(--gray-50);
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
+            border-radius: var(--radius-sm);
+            margin: 16px 0;
+        }
+        
+        body.dark-mode .legal-content .highlight-box {
+            background: #0f172a;
+        }
+        
+        .legal-content .highlight-box p {
+            margin-bottom: 0;
+        }
+        
+        .legal-footer {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 2px solid var(--gray-200);
+            text-align: center;
+            color: var(--gray-500);
+            font-size: 0.9rem;
+        }
+        
+        body.dark-mode .legal-footer {
+            border-top-color: #334155;
+        }
+        
+        .legal-footer .back-link {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition);
+        }
+        
+        .legal-footer .back-link:hover {
+            color: var(--primary-dark);
+            transform: translateX(-4px);
+        }
+        
+        /* Cookie Consent Banner Styles */
+        .cookie-consent {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 900px;
+            width: calc(100% - 40px);
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(0,0,0,0.04);
+            z-index: 1000;
+            display: none;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        body.dark-mode .cookie-consent {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        .cookie-consent.show {
+            display: flex;
+        }
+        
+        .cookie-consent p {
+            flex: 1;
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            min-width: 200px;
+        }
+        
+        body.dark-mode .cookie-consent p {
+            color: #cbd5e1;
+        }
+        
+        .cookie-consent .cookie-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .cookie-consent .btn-sm {
+            padding: 6px 16px;
+            font-size: 0.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            .legal-card { padding: 24px 20px; }
+            .legal-header h1 { font-size: 1.6rem; }
+            .legal-content h2 { font-size: 1.1rem; }
+            .legal-content h3 { font-size: 0.95rem; }
+            .cookie-table { font-size: 0.8rem; }
+            .cookie-table th, .cookie-table td { padding: 6px 8px; }
+            .cookie-consent { padding: 16px; flex-direction: column; text-align: center; }
+            .cookie-consent .cookie-actions { justify-content: center; }
+        }
+        
+        @media (max-width: 480px) {
+            .legal-card { padding: 16px; border-radius: var(--radius-sm); }
+            .legal-header h1 { font-size: 1.3rem; }
+            .legal-content ul { padding-left: 16px; }
+            .cookie-table { font-size: 0.7rem; }
+            .cookie-table th, .cookie-table td { padding: 4px 6px; }
+            .cookie-consent p { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== COOKIE CONSENT BANNER ===== -->
+    <div class="cookie-consent" id="cookieConsent">
+        <p>
+            <i class="fas fa-cookie-bite" style="color:var(--primary);"></i>
+            We use cookies to enhance your experience. By continuing to use EduTrack, 
+            you agree to our use of cookies.
+        </p>
+        <div class="cookie-actions">
+            <button class="btn btn-primary btn-sm" onclick="acceptCookies()">
+                <i class="fas fa-check"></i> Accept All
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="acceptEssential()">
+                <i class="fas fa-cog"></i> Essential Only
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="showCookieSettings()">
+                <i class="fas fa-sliders-h"></i> Settings
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <i class="fas fa-graduation-cap"></i>
+            <span>EduTrack</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+            <a href="student-profile.html"><i class="fas fa-user-graduate"></i><span>Students</span></a>
+            <a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <button id="themeToggleSidebar" class="theme-toggle-btn" style="display:flex;align-items:center;gap:8px;width:100%;padding:8px 12px;background:transparent;border:none;cursor:pointer;color:var(--gray-600);font-size:0.9rem;border-radius:var(--radius-sm);transition:all var(--transition);">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
+            </button>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff&size=40" alt="Admin" />
+                <div>
+                    <strong>Admin User</strong>
+                    <span>Administrator</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1>Cookie Policy</h1>
+                <nav class="breadcrumbs" style="display:flex;gap:6px;font-size:0.8rem;color:var(--gray-500);margin-left:16px;">
+                    <a href="../index.html" style="color:var(--gray-500);text-decoration:none;">Home</a>
+                    <span>/</span>
+                    <span style="color:var(--gray-700);">Cookie Policy</span>
+                </nav>
+            </div>
+            <div class="header-right">
+                <button class="theme-toggle-btn" id="themeToggleHeader" style="font-size:1.2rem;background:none;border:none;cursor:pointer;color:var(--gray-600);">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="settings.html">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff&size=36" alt="Admin" class="avatar" style="border-radius:50%;width:36px;height:36px;cursor:pointer;" />
+                </a>
+            </div>
+        </header>
+
+        <div class="legal-container">
+            <div class="legal-card">
+                <div class="legal-header">
+                    <h1>🍪 Cookie Policy</h1>
+                    <p>How we use cookies to improve your experience.</p>
+                    <span class="last-updated">📅 Last Updated: January 15, 2026</span>
+                </div>
+
+                <div class="legal-content">
+                    <h2><i class="fas fa-question-circle"></i> What Are Cookies?</h2>
+                    <p>
+                        Cookies are small text files that are stored on your device when you visit a website. 
+                        They help us remember your preferences, understand how you use our platform, and improve 
+                        your experience.
+                    </p>
+
+                    <div class="highlight-box">
+                        <p>
+                            <strong>🍪 Cookie Tip:</strong> You can control cookie settings in your browser 
+                            preferences at any time.
+                        </p>
+                    </div>
+
+                    <h2><i class="fas fa-list"></i> Types of Cookies We Use</h2>
+                    <p>We use the following types of cookies on EduTrack:</p>
+
+                    <table class="cookie-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Purpose</th>
+                                <th>Duration</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Session Cookies</strong></td>
+                                <td>Keep you logged in during your session</td>
+                                <td>Session</td>
+                                <td><span class="badge badge-essential">Essential</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Preference Cookies</strong></td>
+                                <td>Remember your theme, language, and settings</td>
+                                <td>1 year</td>
+                                <td><span class="badge badge-functional">Functional</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Analytics Cookies</strong></td>
+                                <td>Understand how users interact with our platform</td>
+                                <td>2 years</td>
+                                <td><span class="badge badge-analytics">Analytics</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Security Cookies</strong></td>
+                                <td>Protect against fraud and unauthorized access</td>
+                                <td>Session</td>
+                                <td><span class="badge badge-essential">Essential</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Marketing Cookies</strong></td>
+                                <td>Personalize content and offers (optional)</td>
+                                <td>1 year</td>
+                                <td><span class="badge badge-marketing">Marketing</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h2><i class="fas fa-cog"></i> How We Use Cookies</h2>
+                    
+                    <h3>1. Essential Cookies</h3>
+                    <ul>
+                        <li>Enable core functionality like authentication</li>
+                        <li>Maintain secure sessions</li>
+                        <li>Remember your login status</li>
+                        <li>Protect against security threats</li>
+                    </ul>
+
+                    <h3>2. Functional Cookies</h3>
+                    <ul>
+                        <li>Remember your theme preference (dark/light mode)</li>
+                        <li>Save your language settings</li>
+                        <li>Store your dashboard layout preferences</li>
+                        <li>Remember your notification settings</li>
+                    </ul>
+
+                    <h3>3. Analytics Cookies</h3>
+                    <ul>
+                        <li>Track page visits and time spent</li>
+                        <li>Understand which features are most used</li>
+                        <li>Identify areas for improvement</li>
+                        <li>Measure platform performance</li>
+                    </ul>
+
+                    <h2><i class="fas fa-check-circle"></i> Your Cookie Choices</h2>
+                    <p>You have full control over cookies:</p>
+                    <ul>
+                        <li>
+                            <strong>Accept All:</strong> Allow all cookies for the best experience
+                        </li>
+                        <li>
+                            <strong>Essential Only:</strong> Only allow necessary cookies
+                        </li>
+                        <li>
+                            <strong>Custom Settings:</strong> Choose which cookies to enable
+                        </li>
+                        <li>
+                            <strong>Browser Settings:</strong> Manage cookies through your browser
+                        </li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <p>
+                            <strong>🔧 Browser Controls:</strong> Most browsers allow you to control cookies 
+                            through their settings. You can delete existing cookies and prevent future cookies 
+                            from being stored.
+                        </p>
+                    </div>
+
+                    <h2><i class="fas fa-third-party"></i> Third-Party Cookies</h2>
+                    <p>
+                        We may use third-party services that place cookies on your device:
+                    </p>
+                    <ul>
+                        <li><strong>Google Analytics:</strong> For platform analytics</li>
+                        <li><strong>Chart.js:</strong> For interactive charts</li>
+                        <li><strong>Font Awesome:</strong> For icons</li>
+                        <li><strong>Google Fonts:</strong> For typography</li>
+                    </ul>
+
+                    <h2><i class="fas fa-sync-alt"></i> Updates to This Policy</h2>
+                    <p>
+                        We may update this Cookie Policy to reflect changes in technology or regulations. 
+                        We'll notify you of significant changes via email or platform notification.
+                    </p>
+
+                    <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+                    <p>
+                        If you have questions about our Cookie Policy, please contact us:
+                    </p>
+                    <ul>
+                        <li><strong>Email:</strong> privacy@edutrack.com</li>
+                        <li><strong>Address:</strong> 123 Education Blvd, School City, SC 12345</li>
+                        <li><strong>Phone:</strong> +1 (555) 123-4567</li>
+                    </ul>
+                </div>
+
+                <div class="legal-footer">
+                    <p>© 2026 EduTrack. All rights reserved.</p>
+                    <a href="../index.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // ===== COOKIE CONSENT =====
+        function checkCookieConsent() {
+            const consent = localStorage.getItem('cookie-consent');
+            if (!consent) {
+                document.getElementById('cookieConsent').classList.add('show');
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookie-consent', 'all');
+            document.getElementById('cookieConsent').classList.remove('show');
+            alert('✅ Cookies accepted! You\'ll now have the full experience.');
+        }
+
+        function acceptEssential() {
+            localStorage.setItem('cookie-consent', 'essential');
+            document.getElementById('cookieConsent').classList.remove('show');
+            alert('🔒 Essential cookies only. Some features may be limited.');
+        }
+
+        function showCookieSettings() {
+            alert('🔧 Cookie Settings:\n\n' +
+                  '🍪 Essential: Always enabled\n' +
+                  '🎨 Functional: Enabled\n' +
+                  '📊 Analytics: Disabled\n' +
+                  '📢 Marketing: Disabled\n\n' +
+                  'Visit your browser settings for more control.');
+        }
+
+        // ===== SIDEBAR TOGGLE =====
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // ===== THEME TOGGLE =====
+        document.getElementById('themeToggleHeader').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            updateThemeIcons();
+        });
+
+        document.getElementById('themeToggleSidebar').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            updateThemeIcons();
+        });
+
+        function updateThemeIcons() {
+            const isDark = document.body.classList.contains('dark-mode');
+            const icons = document.querySelectorAll('.theme-toggle-btn i');
+            const text = document.querySelector('#themeToggleSidebar span');
+            icons.forEach(icon => {
+                icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            });
+            if (text) {
+                text.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+            }
+        }
+
+        // ===== INITIALIZE =====
+        document.addEventListener('DOMContentLoaded', function() {
+            checkCookieConsent();
+        });
+    </script>
+</body>
+</html>

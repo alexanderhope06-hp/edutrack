@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy - EduTrack</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+
+    <style>
+        .legal-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        
+        .legal-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 48px 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        
+        body.dark-mode .legal-card {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        .legal-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid var(--gray-200);
+        }
+        
+        body.dark-mode .legal-header {
+            border-bottom-color: #334155;
+        }
+        
+        .legal-header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+        
+        body.dark-mode .legal-header h1 {
+            color: #e2e8f0;
+        }
+        
+        .legal-header p {
+            color: var(--gray-500);
+            font-size: 0.95rem;
+        }
+        
+        .legal-header .last-updated {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 4px 16px;
+            background: var(--gray-100);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--gray-600);
+        }
+        
+        body.dark-mode .legal-header .last-updated {
+            background: #0f172a;
+            color: #94a3b8;
+        }
+        
+        .legal-content h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-top: 32px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        body.dark-mode .legal-content h2 {
+            color: #e2e8f0;
+        }
+        
+        .legal-content h2 i {
+            color: var(--primary);
+            font-size: 1.1rem;
+            width: 24px;
+        }
+        
+        .legal-content h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        
+        body.dark-mode .legal-content h3 {
+            color: #cbd5e1;
+        }
+        
+        .legal-content p {
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        
+        body.dark-mode .legal-content p {
+            color: #cbd5e1;
+        }
+        
+        .legal-content ul {
+            padding-left: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .legal-content ul li {
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 6px;
+        }
+        
+        body.dark-mode .legal-content ul li {
+            color: #cbd5e1;
+        }
+        
+        .legal-content .highlight-box {
+            background: var(--gray-50);
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
+            border-radius: var(--radius-sm);
+            margin: 16px 0;
+        }
+        
+        body.dark-mode .legal-content .highlight-box {
+            background: #0f172a;
+        }
+        
+        .legal-content .highlight-box p {
+            margin-bottom: 0;
+        }
+        
+        .legal-footer {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 2px solid var(--gray-200);
+            text-align: center;
+            color: var(--gray-500);
+            font-size: 0.9rem;
+        }
+        
+        body.dark-mode .legal-footer {
+            border-top-color: #334155;
+        }
+        
+        .legal-footer .back-link {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition);
+        }
+        
+        .legal-footer .back-link:hover {
+            color: var(--primary-dark);
+            transform: translateX(-4px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .legal-card {
+                padding: 24px 20px;
+            }
+            
+            .legal-header h1 {
+                font-size: 1.6rem;
+            }
+            
+            .legal-content h2 {
+                font-size: 1.1rem;
+            }
+            
+            .legal-content h3 {
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .legal-card {
+                padding: 16px;
+                border-radius: var(--radius-sm);
+            }
+            
+            .legal-header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .legal-content ul {
+                padding-left: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <i class="fas fa-graduation-cap"></i>
+            <span>EduTrack</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+            <a href="student-profile.html"><i class="fas fa-user-graduate"></i><span>Students</span></a>
+            <a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <button id="themeToggleSidebar" class="theme-toggle-btn" style="display:flex;align-items:center;gap:8px;width:100%;padding:8px 12px;background:transparent;border:none;cursor:pointer;color:var(--gray-600);font-size:0.9rem;border-radius:var(--radius-sm);transition:all var(--transition);">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
+            </button>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff&size=40" alt="Admin" />
+                <div>
+                    <strong>Admin User</strong>
+                    <span>Administrator</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1>Privacy Policy</h1>
+                <nav class="breadcrumbs" style="display:flex;gap:6px;font-size:0.8rem;color:var(--gray-500);margin-left:16px;">
+                    <a href="../index.html" style="color:var(--gray-500);text-decoration:none;">Home</a>
+                    <span>/</span>
+                    <span style="color:var(--gray-700);">Privacy Policy</span>
+                </nav>
+            </div>
+            <div class="header-right">
+                <button class="theme-toggle-btn" id="themeToggleHeader" style="font-size:1.2rem;background:none;border:none;cursor:pointer;color:var(--gray-600);">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="settings.html">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff&size=36" alt="Admin" class="avatar" style="border-radius:50%;width:36px;height:36px;cursor:pointer;" />
+                </a>
+            </div>
+        </header>
+
+        <div class="legal-container">
+            <div class="legal-card">
+                <div class="legal-header">
+                    <h1>🔒 Privacy Policy</h1>
+                    <p>Your privacy matters to us. Here's how we handle your data.</p>
+                    <span class="last-updated">📅 Last Updated: January 15, 2026</span>
+                </div>
+
+                <div class="legal-content">
+                    <h2><i class="fas fa-info-circle"></i> Introduction</h2>
+                    <p>
+                        At EduTrack, we take your privacy seriously. This Privacy Policy explains how we collect, use, 
+                        disclose, and safeguard your information when you use our school management platform.
+                    </p>
+                    <p>
+                        Please read this privacy policy carefully. By using EduTrack, you consent to the data practices 
+                        described in this policy.
+                    </p>
+
+                    <div class="highlight-box">
+                        <p>
+                            <strong>📌 Key Principle:</strong> We only collect data that helps us provide better educational 
+                            management services. We never sell your data to third parties.
+                        </p>
+                    </div>
+
+                    <h2><i class="fas fa-database"></i> Information We Collect</h2>
+                    
+                    <h3>1. Personal Information</h3>
+                    <ul>
+                        <li><strong>Student Data:</strong> Names, grades, attendance records, academic performance</li>
+                        <li><strong>Teacher Data:</strong> Names, contact information, assigned subjects</li>
+                        <li><strong>Parent/Guardian Data:</strong> Contact information, relationships to students</li>
+                        <li><strong>Admin Data:</strong> Login credentials, role permissions, activity logs</li>
+                    </ul>
+
+                    <h3>2. Usage Data</h3>
+                    <ul>
+                        <li>Browser type and version</li>
+                        <li>Device information</li>
+                        <li>Pages visited and time spent</li>
+                        <li>Features used and interactions</li>
+                        <li>IP addresses (anonymized)</li>
+                    </ul>
+
+                    <h3>3. Cookies & Tracking</h3>
+                    <ul>
+                        <li>Session cookies for authentication</li>
+                        <li>Preference cookies for theme and language settings</li>
+                        <li>Analytics cookies for performance improvement</li>
+                    </ul>
+
+                    <h2><i class="fas fa-shield-alt"></i> How We Use Your Information</h2>
+                    <ul>
+                        <li><strong>School Management:</strong> To manage students, subjects, results, and reports</li>
+                        <li><strong>Communication:</strong> To send notifications, reports, and important updates</li>
+                        <li><strong>Improvement:</strong> To analyze usage and improve our platform</li>
+                        <li><strong>Security:</strong> To protect against unauthorized access</li>
+                        <li><strong>Compliance:</strong> To meet legal and regulatory requirements</li>
+                    </ul>
+
+                    <h2><i class="fas fa-share-alt"></i> Data Sharing & Disclosure</h2>
+                    <p>We only share your data in the following circumstances:</p>
+                    <ul>
+                        <li><strong>With your consent:</strong> When you give us explicit permission</li>
+                        <li><strong>Service Providers:</strong> Trusted third parties who assist with hosting, email, and analytics</li>
+                        <li><strong>Legal Requirements:</strong> When required by law or to protect rights</li>
+                        <li><strong>School Administration:</strong> Between authorized school staff members</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <p>
+                            <strong>🔒 Data Security:</strong> We implement robust security measures including encryption, 
+                            access controls, and regular security audits to protect your data.
+                        </p>
+                    </div>
+
+                    <h2><i class="fas fa-user-clock"></i> Data Retention</h2>
+                    <p>
+                        We retain your data for as long as your account is active or as needed to provide services. 
+                        You may request deletion of your data at any time.
+                    </p>
+                    <ul>
+                        <li><strong>Student Records:</strong> Retained for 5 years after graduation</li>
+                        <li><strong>Account Data:</strong> Retained until account deletion request</li>
+                        <li><strong>Analytics Data:</strong> Anonymized and retained for 2 years</li>
+                    </ul>
+
+                    <h2><i class="fas fa-gavel"></i> Your Rights</h2>
+                    <p>You have the following rights regarding your data:</p>
+                    <ul>
+                        <li><strong>Access:</strong> Request a copy of your data</li>
+                        <li><strong>Correction:</strong> Update inaccurate information</li>
+                        <li><strong>Deletion:</strong> Request data removal (subject to legal requirements)</li>
+                        <li><strong>Restriction:</strong> Limit how we use your data</li>
+                        <li><strong>Portability:</strong> Receive your data in a structured format</li>
+                        <li><strong>Opt-out:</strong> Unsubscribe from marketing communications</li>
+                    </ul>
+
+                    <h2><i class="fas fa-child"></i> Children's Privacy</h2>
+                    <p>
+                        EduTrack is designed for use by schools and educational institutions. We do not knowingly 
+                        collect data from children under 13 without parental consent. Schools are responsible for 
+                        obtaining appropriate consent from parents/guardians.
+                    </p>
+
+                    <h2><i class="fas fa-globe"></i> International Data Transfers</h2>
+                    <p>
+                        Your data may be processed in countries where we or our service providers operate. 
+                        We ensure appropriate safeguards are in place for international transfers.
+                    </p>
+
+                    <h2><i class="fas fa-bell"></i> Updates to This Policy</h2>
+                    <p>
+                        We may update this Privacy Policy from time to time. We will notify you of any material 
+                        changes by posting the new policy on this page and updating the "Last Updated" date.
+                    </p>
+
+                    <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+                    <p>
+                        If you have any questions about this Privacy Policy or our data practices, please contact us:
+                    </p>
+                    <ul>
+                        <li><strong>Email:</strong> privacy@edutrack.com</li>
+                        <li><strong>Address:</strong> 123 Education Blvd, School City, SC 12345</li>
+                        <li><strong>Phone:</strong> +1 (555) 123-4567</li>
+                    </ul>
+                </div>
+
+                <div class="legal-footer">
+                    <p>© 2026 EduTrack. All rights reserved.</p>
+                    <a href="../index.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Sidebar toggle
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // Theme toggle
+        document.getElementById('themeToggleHeader').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            updateThemeIcons();
+        });
+
+        document.getElementById('themeToggleSidebar').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            updateThemeIcons();
+        });
+
+        function updateThemeIcons() {
+            const isDark = document.body.classList.contains('dark-mode');
+            const icons = document.querySelectorAll('.theme-toggle-btn i');
+            const text = document.querySelector('#themeToggleSidebar span');
+            icons.forEach(icon => {
+                icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            });
+            if (text) {
+                text.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+            }
+        }
+    </script>
+</body>
+</html>
