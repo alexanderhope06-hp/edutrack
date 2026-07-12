@@ -507,6 +507,11 @@
     .stat-card {
         flex-direction: row !important;
         text-align: left !important;
+    
+    .preview-stat .stat-number {
+        font-size: 1rem !important;
+    }
+}
         padding: 12px !important;
     }
     
@@ -519,8 +524,3 @@
     .stat-info .stat-number {
         font-size: 1rem !important;
     }
-    
-    .preview-stat .stat-number {
-        font-size: 1rem !important;
-    }
-}
